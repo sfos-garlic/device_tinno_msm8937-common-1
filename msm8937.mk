@@ -343,10 +343,6 @@ PRODUCT_PACKAGES += \
     qti_telephony_utils.xml
 
 
-PRODUCT_BOOT_JARS += \
-    ims-ext-common_system \
-    telephony-ext
-
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.smartselection.bundle1
