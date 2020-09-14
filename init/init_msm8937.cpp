@@ -41,16 +41,14 @@
 #include <sys/_system_properties.h>
 
 #include "vendor_init.h"
-#include "property_service.h"
 
 #define FP_DEV_FLE "/sys/devices/platform/fp_drv/fp_drv_info"
 
 using android::base::Trim;
 using android::base::GetProperty;
 using android::base::ReadFileToString;
-int property_set(const char *key, const char *value) {
-    return __system_property_set(key, value);
-}
+using android::base::SetProperty;
+
 void init_fingerprint_properties()
 {
     std::string fp_dev;
@@ -58,27 +56,27 @@ void init_fingerprint_properties()
     if (ReadFileToString(FP_DEV_FLE, &fp_dev)) {
         LOG(INFO) << "Loading Fingerprint HAL for sensor version " << fp_dev;
         if (!strncmp(fp_dev.c_str(), "silead_fp", 9)) {
-            property_set("ro.hardware.fingerprint", "silead");
-            property_set("persist.sys.fp.goodix", "0");
+            SetProperty("ro.hardware.fingerprint", "silead");
+            SetProperty("persist.sys.fp.goodix", "0");
         } else if (!strncmp(fp_dev.c_str(), "goodix_fp", 9)) {
-            property_set("ro.hardware.fingerprint", "goodix");
-            property_set("persist.sys.fp.goodix", "1");
+            SetProperty("ro.hardware.fingerprint", "goodix");
+            SetProperty("persist.sys.fp.goodix", "1");
         } else if (!strncmp(fp_dev.c_str(), "elan_fp", 7)) {
-            property_set("ro.hardware.fingerprint", "elan");
-            property_set("persist.sys.fp.goodix", "0");
+            SetProperty("ro.hardware.fingerprint", "elan");
+            SetProperty("persist.sys.fp.goodix", "0");
         } else if (!strncmp(fp_dev.c_str(), "chipone_fp", 10)) {
-            property_set("ro.hardware.fingerprint", "chipone");
-            property_set("persist.sys.fp.goodix", "0");
+            SetProperty("ro.hardware.fingerprint", "chipone");
+            SetProperty("persist.sys.fp.goodix", "0");
         } else {
             LOG(ERROR) << "Unsupported fingerprint sensor: " << fp_dev;
-            property_set("ro.hardware.fingerprint", "none");
-            property_set("persist.sys.fp.goodix", "0");
+            SetProperty("ro.hardware.fingerprint", "none");
+            SetProperty("persist.sys.fp.goodix", "0");
         }
     }
     else {
         LOG(ERROR) << "Failed to detect sensor version";
-        property_set("ro.hardware.fingerprint", "none");
-        property_set("persist.sys.fp.goodix", "0");
+        SetProperty("ro.hardware.fingerprint", "none");
+        SetProperty("persist.sys.fp.goodix", "0");
     }
 }
 
@@ -109,9 +107,9 @@ static void init_alarm_boot_properties()
          */
          if ((Trim(boot_reason) == "3" || reboot_reason == "true")
                  && Trim(power_off_alarm) == "1") {
-             property_set("ro.alarm_boot", "true");
+             SetProperty("ro.alarm_boot", "true");
          } else {
-             property_set("ro.alarm_boot", "false");
+             SetProperty("ro.alarm_boot", "false");
          }
     }
 }
