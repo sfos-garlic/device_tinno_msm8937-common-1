@@ -48,8 +48,9 @@
 using android::base::Trim;
 using android::base::GetProperty;
 using android::base::ReadFileToString;
-using android::init::property_set;
-
+int property_set(const char *key, const char *value) {
+    return __system_property_set(key, value);
+}
 void init_fingerprint_properties()
 {
     std::string fp_dev;
