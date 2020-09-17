@@ -195,6 +195,13 @@ ro.vendor.qti.sys.fw.trim_cache_percent=100 \
 ro.vendor.qti.sys.fw.trim_empty_percent=100 \
 ro.vendor.qti.sys.fw.trim_enable_memory=2147483648 \
 ro.vendor.qti.sys.fw.use_trim_settings=true
+debug.sf.use_phase_offsets_as_durations=1 \
+debug.sf.late.sf.duration=10500000 \
+debug.sf.late.app.duration=20500000 \
+debug.sf.early.sf.duration=21000000 \
+debug.sf.early.app.duration=16500000 \
+debug.sf.earlyGl.sf.duration=13500000 \
+debug.sf.earlyGl.app.duration=21000000 \
 
 # Wi-Fi
 PRODUCT_PROPERTY_OVERRIDES += \
