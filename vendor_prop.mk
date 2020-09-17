@@ -199,3 +199,7 @@ ro.vendor.qti.sys.fw.use_trim_settings=true
 # Wi-Fi
 PRODUCT_PROPERTY_OVERRIDES += \
 wifi.interface=wlan0
+
+# Disable RescueParty / rescue mode
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.disable_rescue=true
