@@ -16,7 +16,6 @@ VNDK_SP_LIBRARIES := \
     libbacktrace \
     libbase \
     libbcinfo \
-    libbinderthreadstate \
     libblas \
     libc++ \
     libcompiler_rt \
@@ -24,7 +23,6 @@ VNDK_SP_LIBRARIES := \
     libhardware \
     libhidlbase \
     libhidlmemory \
-    libhwbinder_noltopgo \
     libion \
     libjsoncpp \
     liblzma \
