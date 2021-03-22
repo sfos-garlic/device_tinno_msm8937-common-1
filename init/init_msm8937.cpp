@@ -47,7 +47,6 @@
 
 #include "property_service.h"
 #include "vendor_init.h"
-#include "util.h"
 
 using android::base::GetProperty;
 using android::base::ReadFileToString;
