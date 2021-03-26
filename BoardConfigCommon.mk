@@ -214,6 +214,9 @@ endif
 # Treble
 TARGET_COPY_OUT_VENDOR := system/vendor
 
+# HIDL
+PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
+
 # Vendor init
 TARGET_INIT_VENDOR_LIB := libinit.tinno_8937
 TARGET_RECOVERY_DEVICE_MODULES := libinit.tinno_8937
